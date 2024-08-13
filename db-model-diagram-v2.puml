@@ -1,0 +1,52 @@
+@startuml db-model-diagram-v2
+entity Usuario {
+    +id: UUID <<PK>>
+    +username: CharField
+    +email: EmailField
+    +password: CharField
+}
+
+entity Rol {
+    +id: UUID <<PK>>
+    +name: CharField
+}
+
+entity Modulo {
+    +id: UUID <<PK>>
+    +name: CharField
+    +description: TextField
+}
+
+entity Permiso {
+    +id: UUID <<PK>>
+    +name: CharField
+    +code: CharField
+    +modulo_id: UUID <<FK>>
+}
+
+entity PermisoUsuario {
+    +id: UUID <<PK>>
+    +usuario_id: UUID <<FK>>
+    +permiso_id: UUID <<FK>>
+}
+
+entity UsuarioRol {
+    +id: UUID <<PK>>
+    +usuario_id: UUID <<FK>>
+    +rol_id: UUID <<FK>>
+}
+
+entity RolPermiso {
+    +id: UUID <<PK>>
+    +rol_id: UUID <<FK>>
+    +permiso_id: UUID <<FK>>
+}
+
+Usuario ||--o{ UsuarioRol : "many-to-many"
+Rol ||--o{ UsuarioRol : "many-to-many"
+Rol ||--o{ RolPermiso : "many-to-many"
+Permiso ||--o{ RolPermiso : "many-to-many"
+PermisoUsuario }o--|| Usuario : "many-to-one"
+PermisoUsuario }o--|| Permiso : "many-to-one"
+Permiso }o--|| Modulo : "many-to-one"
+@enduml
