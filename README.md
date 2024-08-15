@@ -41,6 +41,11 @@ pip install -r requirements.txt
 docker-compose up -d
 ```
 
+### Opcional: Ejecutar script para precargar datos de prueba
+```bash
+python manage.py populate_db
+```
+
 ### 5. Ejecutar las migraciones
 ```bash
 python manage.py makemigrations
@@ -54,6 +59,10 @@ python manage.py runserver
 
 ### 7. Acceder a la documentación de la API (Swagger UI)
 Abre tu navegador y accede a la URL ` http://127.0.0.1:8000/api/schema/swagger-ui/`
+
+#### Usuario de prueba para autenticación (También lo puedes encontrar en el archivo populate_db.py)
+- email: admin@example.com
+- password: adminpassword 
 
 
 ## Modelo de datos del Sistema
