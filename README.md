@@ -41,15 +41,15 @@ pip install -r requirements.txt
 docker-compose up -d
 ```
 
-### Opcional: Ejecutar script para precargar datos de prueba
-```bash
-python manage.py populate_db
-```
-
 ### 5. Ejecutar las migraciones
 ```bash
 python manage.py makemigrations
 python manage.py migrate
+```
+
+### Opcional: Ejecutar script para precargar datos de prueba
+```bash
+python manage.py populate_db
 ```
 
 ### 6. Ejectuar el servidor de desarrollo
